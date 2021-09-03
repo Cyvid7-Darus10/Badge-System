@@ -8,5 +8,5 @@ def index(request):
 def claim(request):
     return HttpResponse("Claim!")
 
-def verify(request):
-    return HttpResponse("Verify!")
+def verify(request, code):
+    return HttpResponse(f"Verify!, {code}")
