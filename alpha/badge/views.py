@@ -9,6 +9,6 @@ def claim(request):
     return render(request, "claim/index.html")
 
 def verify(request, code):
-    return render(request, "verify/index.html", {
+    return render(request, "verify/verify.html", {
         "code" : code 
     })
