@@ -9,6 +9,9 @@ def claim(request):
     return render(request, "claim/claim.html")
 
 def verify(request, code):
+    # Checks whether code is valid
+    # Code here
+    
     return render(request, "verify/verify.html", {
         "code" : code 
     })
