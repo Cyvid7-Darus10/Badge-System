@@ -3,10 +3,12 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello!")
+    return render(request, "home/index.html")
 
 def claim(request):
-    return HttpResponse("Claim!")
+    return render(request, "claim/index.html")
 
 def verify(request, code):
-    return HttpResponse(f"Verify!, {code}")
+    return render(request, "verify/index.html", {
+        "code" : code 
+    })
