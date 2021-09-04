@@ -7,7 +7,7 @@ def index(request):
 def claim(request):
     return render(request, "badge/claim/claim.html")
 
-def view_badge(request, code = 0):
+def view_badge(request, code):
     return render(request, "badge/verify/view.html", {
         "code" : code 
     })
