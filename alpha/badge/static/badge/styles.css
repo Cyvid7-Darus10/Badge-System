@@ -314,7 +314,7 @@ Footer
 Input
 *********************/
 .input-container {
-  max-width: 40vw;
+  max-width: 250px;
   clear: both;
   color: white;
 }
@@ -324,4 +324,9 @@ Input
   clear: both;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+#submit-button {
+  margin-top: 2rem;
+  max-width: 50%;
 }

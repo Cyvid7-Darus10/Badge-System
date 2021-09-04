@@ -28,10 +28,9 @@
             <div class="input-container">
               <form action="{% url 'badge:verify' %}" method="post">
                 {% csrf_token %}
-                <label>SERIAL CODE</label>
-                <input type="text" name="first"><br />
+                {{ form }}
+                <input id="submit-button" type="submit" value="Verify">
               </form>
-              <button>CLAIM</button>
             </div>
         </section>
         <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>

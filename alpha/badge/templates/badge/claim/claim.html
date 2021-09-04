@@ -27,14 +27,9 @@
             <div class="input-container">
               <form action="{% url 'badge:claim' %}" method="post">
                 {% csrf_token %}
-                <label>CODE</label>
-                <input type="text" name="code"><br />
-                <label>NAME</label>
-                <input type="text" name="name"><br />
-                <label>EMAIL</label>
-                <input type="text" name="email"><br />
+                {{ form }}
+                <input id="submit-button" type="submit" value="Claim">
               </form>
-              <button>CLAIM</button>
             </div>
         </section>
 
