@@ -7,10 +7,10 @@ def index(request):
 def claim(request):
     return render(request, "badge/claim/claim.html")
 
-def verify(request, code = 0):
-    # Checks whether code is valid
-    # Code here
-
-    return render(request, "badge/verify/verify.html", {
+def view_badge(request, code = 0):
+    return render(request, "badge/verify/view.html", {
         "code" : code 
     })
+
+def verify(request):
+    return render(request, "badge/verify/verify.html")

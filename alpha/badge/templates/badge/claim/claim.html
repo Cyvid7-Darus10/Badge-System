@@ -1,5 +1,41 @@
 {% extends "badge/layout.html"%} 
+{% load static %}
 
 {% block body %}
-  <h1>This is the claim page</h1>
+  <link rel="stylesheet" href="{% static 'badge/claim/styles.css' %}" />
+
+  <div class="content-wrapper">
+    <div class="overlay"></div>
+    <div class="content">
+
+        <header class="navigation">
+            <a href="#" class="logo">
+                <div></div>
+            </a>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/verify">Verify</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="main home-content container">
+
+            <h2>CLAIM YOUR BADGE</h2>
+            <div class="input-container">
+              <form>
+                <label>CODE</label>
+                <input type="text" name="first"><br />
+                <label>EMAIL</label>
+                <input type="text" name="last"><br />
+              </form>
+              <button>CLAIM</button>
+            </div>
+        </section>
+        <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
+    </div>
+  </div>
 {% endblock %}
