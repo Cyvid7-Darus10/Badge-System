@@ -206,12 +206,13 @@ GRID
 .content {
   position: relative;
   height: 100%;
-  background: url("http://www.9to5animations.com/wp-content/uploads/2015/04/Colorful-Animated-Wallpapers-colors-hd.gif") center center;
+  background: url(http://www.9to5animations.com/wp-content/uploads/2015/04/Colorful-Animated-Wallpapers-colors-hd.gif);
   background-size: cover;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-position: right;
 }
 
 .content > * {
@@ -326,7 +327,29 @@ Input
   text-align: center;
 }
 
+
+/* Button custom CSS */
+
 #submit-button {
+  padding: 2px 13px;
+  font-size: 24px;
   margin-top: 2rem;
   max-width: 50%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #67d172;
+  border: none;
+  box-shadow: 0 4px #999;
 }
+
+#submit-button:hover {background-color: #3e8e41}
+
+#submit-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
