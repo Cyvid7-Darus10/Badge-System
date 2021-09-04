@@ -200,7 +200,7 @@ GRID
 .df-content-wrapper {
   width: 100%;
   height: 100%;
-  background: #2f2f2f;
+  background: #090909;
 }
 
 .df-content {
@@ -244,7 +244,7 @@ Navigation
 .df-logo div {
   width: 50px;
   height: 50px;
-  border: 3px solid #ffdb73;
+  border: 3px solid #67d172;
   border-radius: 5px;
   margin-right: 10px;
   display: inline-block;
@@ -256,7 +256,7 @@ Navigation
 }
 
 .df-menu ul li a {
-  color: #ffdb73;
+  color: #67d172;
   font-size: 2rem;
 }
 
@@ -276,7 +276,7 @@ Content
 
 .df-home-content h2 {
   font-size: 5rem;
-  color: #ffdb73;
+  color: #67d172;
   margin: 0 0 10px 0;
 }
 
@@ -296,7 +296,7 @@ Content
 }
 
 .df-social li a {
-  color: #ffdb73;
+  color: #67d172;
   font-size: 2.8rem;
 }
 
