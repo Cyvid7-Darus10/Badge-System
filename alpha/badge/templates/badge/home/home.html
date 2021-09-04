@@ -1,5 +1,47 @@
 {% extends "badge/layout.html"%} 
+{% load static %}
+
 
 {% block body %}
-  <h1>This is the home page</h1>
+
+<link rel="stylesheet" href="{% static 'badge/home/styles.css' %}" />
+
+<div class="df-content-wrapper">
+  <div class="df-overlay"></div>
+  <div class="df-content">
+
+      <header class="df-navigation">
+          <a href="#" class="df-logo">
+              <div></div>
+          </a>
+          <nav class="df-menu">
+              <ul>
+                  <li><a href="#">Claim</a></li>
+                  <li><a href="#">Verify</a></li>
+                  <li><a href="#">Blogs</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </nav>
+      </header>
+
+      <section class="df-main df-home-content container">
+        
+          <h2>BADGE SYSTEM</h2>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit natus quaerat minus, quae quas corporis omnis dignissimos soluta maxime exercitationem, corrupti beatae tempore impedit earum repellendus facere aspernatur explicabo. Tempora.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit natus quaerat minus, quae quas corporis omnis dignissimos soluta maxime exercitationem, corrupti beatae tempore impedit earum repellendus facere aspernatur explicabo. Tempora.
+          </p>
+          <div class="df-social">
+              <ul>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-github"></i></a></li>
+                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
+                  <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+              </ul>
+          </div>
+      </section>
+      <footer class="df-footer">©Copyright All rights reserved - UPCSG 2021</footer>
+  </div>
+</div>
 {% endblock %}
