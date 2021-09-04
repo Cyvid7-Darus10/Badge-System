@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Badge(models.Model):
+    label = models.CharField(max_length=250)
+    date = models.CharField(max_length=50)
+    points = models.IntegerField()
