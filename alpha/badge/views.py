@@ -1,5 +1,7 @@
 from django import forms
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 class claimBadge(forms.Form):
     code  = forms.CharField(label="Code")
@@ -39,7 +41,8 @@ def verify(request):
     if request.method == "POST":
         form = verifyBadge(request.POST)
         if form.is_valid():
-            return redirect('/verify/' + form.cleaned_data["serial"])
+            url = reverse('badge:view_badge', kwargs={'code':form.cleaned_data["serial"]})
+            return HttpResponseRedirect(url)
         else:
             return render(request, "badge/verify/verify.html", {
                 "form" : form 
