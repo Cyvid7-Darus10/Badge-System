@@ -14,8 +14,8 @@
             </a>
             <nav class="menu">
                 <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'verify' %}">Verify</a></li>
+                    <li><a href="{% url 'badge:home' %}">Home</a></li>
+                    <li><a href="{% url 'badge:verify' %}">Verify</a></li>
                     <li><a href="#">Blogs</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -23,18 +23,21 @@
         </header>
 
         <section class="main home-content container">
-
             <h2>CLAIM YOUR BADGE</h2>
             <div class="input-container">
-              <form>
+              <form action="{% url 'badge:claim' %}" method="post">
+                {% csrf_token %}
                 <label>CODE</label>
-                <input type="text" name="first"><br />
+                <input type="text" name="code"><br />
+                <label>NAME</label>
+                <input type="text" name="name"><br />
                 <label>EMAIL</label>
-                <input type="text" name="last"><br />
+                <input type="text" name="email"><br />
               </form>
               <button>CLAIM</button>
             </div>
         </section>
+
         <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
     </div>
   </div>

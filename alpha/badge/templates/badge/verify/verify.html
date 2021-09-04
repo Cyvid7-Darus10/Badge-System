@@ -14,8 +14,8 @@
             </a>
             <nav class="menu">
                 <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'claim' %}">Claim</a></li>
+                    <li><a href="{% url 'badge:home' %}">Home</a></li>
+                    <li><a href="{% url 'badge:claim' %}">Claim</a></li>
                     <li><a href="#">Blogs</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -26,7 +26,8 @@
 
             <h2>VERIFY BADGE</h2>
             <div class="input-container">
-              <form>
+              <form action="{% url 'badge:verify' %}" method="post">
+                {% csrf_token %}
                 <label>SERIAL CODE</label>
                 <input type="text" name="first"><br />
               </form>
