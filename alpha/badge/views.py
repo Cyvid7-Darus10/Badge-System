@@ -7,7 +7,7 @@ def index(request):
 def claim(request):
     return render(request, "badge/claim/claim.html")
 
-def verify(request, code):
+def verify(request, code = 0):
     # Checks whether code is valid
     # Code here
 
