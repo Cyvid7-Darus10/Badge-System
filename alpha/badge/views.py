@@ -2,6 +2,7 @@ from django import forms
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .models import Badge, Guilder, Claimable, Claimed
 
 class claimBadge(forms.Form):
     code  = forms.CharField(label="Code")
@@ -33,8 +34,10 @@ def claim(request):
 
 def view_badge(request, code):
     # Check the code in the db
+    serial = Claimed.objects.get(serial=code)
+    
     return render(request, "badge/verify/view.html", {
-        "code" : code 
+        "code" : serial.guilder.name 
     })
 
 def verify(request):
