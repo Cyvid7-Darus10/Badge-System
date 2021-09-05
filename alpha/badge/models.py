@@ -4,6 +4,7 @@ from datetime import datetime
 class Badge(models.Model):
     label = models.CharField(max_length=250)
     points = models.IntegerField()
+    url = models.CharField(max_length=250)
     date = models.DateField()
     added_on = models.DateTimeField(default=datetime.now, blank=True)
 

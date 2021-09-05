@@ -4,6 +4,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Badge, Guilder, Claimable, Claimed
 from .support import random_serial
+from datetime import datetime
+import pytz
+utc=pytz.UTC
 
 class claimBadge(forms.Form):
     code  = forms.CharField(label="Code")
@@ -18,7 +21,7 @@ def index(request):
     return render(request, "badge/home/home.html")
 
 def claim(request):
-    badge = "Does Not Exist"
+    error = "Does Not Exist"
     if request.method == "POST":
         form = claimBadge(request.POST)
         if form.is_valid():
@@ -26,22 +29,30 @@ def claim(request):
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
             try:
-                badge = Claimable.objects.get(code=code)
-                serial = random_serial()
+                guilder = Guilder.objects.get(email=email.lower())
+                error = "Email is used already."
+            except Guilder.DoesNotExist:
                 try:
-                    guilder = Guilder.objects.get(name=name, email=email)
-                    email = Guilder.objects.get(email=email)
-                except Guilder.DoesNotExist:
-                    guilder = Guilder.objects.create(name=name,email=email)
-                try:
-                    Claimed.objects.get(guilder=guilder,badge=badge)
-                    badge = "Already Claimed"
-                except Claimed.DoesNotExist:
-                    Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
-                    url = reverse('badge:view_badge', kwargs={'code':serial})
-                    return HttpResponseRedirect(url)
-            except Claimable.DoesNotExist:
-                badge = "Not Found"
+                    badge = Claimable.objects.get(code=code)
+                    serial = random_serial()
+                    try:
+                        guilder = Guilder.objects.get(name=name.title(), email=email.lower())
+                    except Guilder.DoesNotExist:
+                        guilder = Guilder.objects.create(name=name.title(),email=email.lower())
+
+                    try:
+                        Claimed.objects.get(guilder=guilder,badge=badge)
+                        error = "Already Claimed"
+                    except Claimed.DoesNotExist:
+                        curr_date = utc.localize(datetime.today())
+                        if (badge.expires_on <= curr_date):
+                            Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
+                            url = reverse('badge:view_badge', kwargs={'code':serial})
+                            return HttpResponseRedirect(url)
+                        else:
+                            error = "Expired Already"
+                except Claimable.DoesNotExist:
+                    error = "Not Found"
         else:
             return render(request, "badge/claim/claim.html", {
                 "form": form
@@ -49,17 +60,15 @@ def claim(request):
 
     return render(request, "badge/claim/claim.html", {
         "form": claimBadge(),
-        "badge": badge
+        "error": error
     })
 
 def view_badge(request, code):
-    # Check the code in the db
     try:
         badge = Claimed.objects.get(serial=code)
     except Claimed.DoesNotExist:
         badge = "Does Not Exist"
-    
-    
+
     return render(request, "badge/verify/view.html", {
         "badge" : badge
     })
