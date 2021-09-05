@@ -23,8 +23,11 @@
         </header>
 
         <section class="main home-content container">
-
-            <h2>{{ code }}</h2>
+            {% if badge.guilder.name %}
+                <h2>{{ badge.guilder.name }}</h2>
+            {% else %}
+                <h2>{{ badge }}</h2>
+            {% endif %}
           
         </section>
         <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
