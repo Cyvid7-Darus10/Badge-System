@@ -363,4 +363,17 @@ Input
   transform: translateY(4px);
 }
 
+.transition-blur {
+  filter: blur(0);
+  opacity: 1;
+  transition: 200ms;
+}
 
+html.is-animating .transition-blur {
+  filter: blur(2px);
+  opacity: 0;
+}
+
+html.is-leaving .transition-blur {
+  filter: blur(2px);
+}

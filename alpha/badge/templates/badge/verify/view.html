@@ -2,38 +2,12 @@
 {% load static %}
 
 {% block body %}
-  <link rel="stylesheet" href="{% static 'badge/verify/view.css' %}" />
-
-  <div class="content-wrapper">
-    <div class="overlay"></div>
-    <div class="content">
-
-        <header class="navigation">
-            <a href="#" class="logo">
-                <img src="{% static 'images/favicon-32x32.png' %}" alt="">
-            </a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="{% url 'badge:home' %}">Home</a></li>
-                    <li><a href="{% url 'badge:claim' %}">Claim</a></li>
-                    <li><a href="#">Blogs</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section class="main home-content container">
-            {% if badge.guilder.name %}
-                <img id="badge" src="{{ badge.badge.badge.url }}" alt="">
-                <h3>{{ badge.guilder.name }}</h3>
-                <h3>{{ badge.badge.badge.label }}</h3>
-                <h4>{{ badge.serial }}</h4>
-            {% else %}
-                <h2>{{ badge }}</h2>
-            {% endif %}
-          
-        </section>
-        <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
-    </div>
-  </div>
+    {% if badge.guilder.name %}
+        <img id="badge" src="{{ badge.badge.badge.url }}" alt="">
+        <h3>{{ badge.guilder.name }}</h3>
+        <h3>{{ badge.badge.badge.label }}</h3>
+        <h4>{{ badge.serial }}</h4>
+    {% else %}
+        <h2>{{ badge }}</h2>
+    {% endif %}
 {% endblock %}

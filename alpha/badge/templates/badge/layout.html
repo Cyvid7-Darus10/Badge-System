@@ -9,6 +9,8 @@
     <link rel="icon" type="image/png" href="{% static 'images/favicon-16x16.png' %}" sizes="16x16">
     <link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32">
     <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon.png' %}" >
+    <script defer src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+    <script defer src="{% static 'badge/common.js' %}"></script>
 
     <title>Badge System</title>
     <link rel="stylesheet" href="{% static 'badge/styles.css' %}" />
@@ -16,9 +18,35 @@
   </head>
   
   <body>
-    {% block body %} 
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'badge/claim/styles.css' %}" />
+
+    <div class="content-wrapper">
+      <div class="overlay"></div>
+      <div class="content">
+          <header class="navigation">
+              <a href="#" class="logo">
+                <img src="{% static 'images/favicon-32x32.png' %}" alt="">
+              </a>
+              <nav class="menu">
+                  <ul>
+                      <li><a href="{% url 'badge:home' %}">Home</a></li>
+                      <li><a href="{% url 'badge:claim' %}">Claim</a></li>
+                      <li><a href="{% url 'badge:verify' %}">Verify</a></li>
+                      <li><a href="#">Blogs</a></li>
+                      <li><a href="#">Contact</a></li>
+                  </ul>
+              </nav>
+          </header>
+          <section id="swup" class="main home-content container transition-blur">
+            {% block body %} 
+            {% endblock %}
+          </section>
+          <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
+      </div>
+    </div>
   </body>
 
   <script src="https://use.fontawesome.com/0b39e945a8.js"></script>
+  <script src="{% static 'lib/jquery.min.js' %}"></script>
+
 </html>

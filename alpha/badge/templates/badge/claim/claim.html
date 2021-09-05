@@ -2,38 +2,13 @@
 {% load static %}
 
 {% block body %}
-  <link rel="stylesheet" href="{% static 'badge/claim/styles.css' %}" />
-
-  <div class="content-wrapper">
-    <div class="overlay"></div>
-    <div class="content">
-        <header class="navigation">
-            <a href="#" class="logo">
-              <img src="{% static 'images/favicon-32x32.png' %}" alt="">
-            </a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="{% url 'badge:home' %}">Home</a></li>
-                    <li><a href="{% url 'badge:verify' %}">Verify</a></li>
-                    <li><a href="#">Blogs</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section class="main home-content container">
-            <h2>CLAIM YOUR BADGE</h2>
-            <div class="input-container">
-              <form action="{% url 'badge:claim' %}" method="post">
-                {% csrf_token %}
-                {{ form }}
-                <input id="submit-button" type="submit" value="Claim">
-              </form>
-              <span class="error">{{ error }}</span>
-            </div>
-        </section>
-
-        <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
-    </div>
+  <h2>CLAIM YOUR BADGE</h2>
+  <div class="input-container">
+    <form action="{% url 'badge:claim' %}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input id="submit-button" type="submit" value="Claim">
+    </form>
+    <span class="error">{{ error }}</span>
   </div>
 {% endblock %}
