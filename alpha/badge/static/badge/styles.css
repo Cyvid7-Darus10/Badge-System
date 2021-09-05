@@ -402,6 +402,21 @@ html.is-leaving .transition-blur {
 }
 
 @media (max-width: 992px) {
+
+  .home-content h2 {
+    font-size: 3rem;
+  }
+  
+  .home-content h3 {
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+  }
+  
+  .home-content h4 {
+    font-size: .8rem;
+    margin: 0 0 10px 0;
+  }
+
   #bar {
     display: block !important;
   }
