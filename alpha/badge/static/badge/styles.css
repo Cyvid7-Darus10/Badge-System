@@ -203,7 +203,6 @@ GRID
 
 .content {
   position: relative;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -222,6 +221,12 @@ Navigation
   display: flex;
   justify-content: space-between;
   padding: 10px 20px 0 20px;
+  background-color: #ffffff17;
+  transition: 500ms;
+}
+
+.navigation:hover .container{
+  filter: blur(1px);
 }
 
 .logo {
@@ -241,7 +246,14 @@ Navigation
 .menu ul li {
   display: inline-block;
   margin: 10px;
+  transition: 500ms;
 }
+
+.menu ul li:hover {
+  background-color: #000000f3;
+  padding: 0 1rem;
+}
+
 
 .menu ul li a {
   color: #67d172;
