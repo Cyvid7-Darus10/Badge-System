@@ -14,11 +14,9 @@
 
     <title>Badge System</title>
     <link rel="stylesheet" href="{% static 'badge/styles.css' %}" />
-    
   </head>
   
   <body>
-    <link rel="stylesheet" href="{% static 'badge/claim/styles.css' %}" />
 
     <div class="content-wrapper">
       <div class="overlay"></div>
@@ -38,7 +36,10 @@
               </nav>
           </header>
           <section id="swup" class="main home-content container transition-blur">
-            {% block body %} 
+            {% for css in csss %}
+              <link rel="stylesheet" href="{{ css }}" />
+            {% endfor %}
+            {% block content %} 
             {% endblock %}
           </section>
           <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>

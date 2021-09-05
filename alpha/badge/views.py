@@ -14,9 +14,17 @@ utc=pytz.UTC
 # VIEWS
 
 def index(request):
-    return render(request, "badge/home/home.html")
+    css = [
+        "/static/badge/home/styles.css"
+    ]
+    return render(request, "badge/home/home.html", {
+        "csss" : css
+    })
 
 def claim(request):
+    css = [
+        "/static/badge/claim/styles.css"
+    ]
     error = ""
     if request.method == "POST":
         form = claimBadge(request.POST)
@@ -51,25 +59,36 @@ def claim(request):
                     error = "Not Found"
         else:
             return render(request, "badge/claim/claim.html", {
-                "form": form
+                "form": form,
+                "csss" : css
             })
 
     return render(request, "badge/claim/claim.html", {
         "form": claimBadge(),
-        "error": error
+        "error": error,
+        "csss" : css
     })
 
 def view_badge(request, code):
+    css = [
+        "/static/badge/verify/view.css"
+    ]
+    
     try:
         badge = Claimed.objects.get(serial=code)
     except Claimed.DoesNotExist:
         badge = "Does Not Exist"
 
     return render(request, "badge/verify/view.html", {
-        "badge" : badge
+        "badge" : badge,
+        "csss" : css
     })
 
 def verify(request):
+    css = [
+        "/static/badge/verify/styles.css"
+    ]
+
     if request.method == "POST":
         form = verifyBadge(request.POST)
         if form.is_valid():
@@ -77,9 +96,11 @@ def verify(request):
             return HttpResponseRedirect(url)
         else:
             return render(request, "badge/verify/verify.html", {
-                "form" : form 
+                "form" : form,
+                "csss" : css
             })
 
     return render(request, "badge/verify/verify.html", {
-        "form" : verifyBadge() 
+        "form" : verifyBadge(),
+        "csss" : css
     })
