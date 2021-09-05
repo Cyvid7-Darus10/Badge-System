@@ -9,8 +9,6 @@ import pytz
 
 utc=pytz.UTC
 
-
-
 # VIEWS
 
 def index(request):
