@@ -21,7 +21,7 @@ def index(request):
     return render(request, "badge/home/home.html")
 
 def claim(request):
-    error = "Does Not Exist"
+    error = ""
     if request.method == "POST":
         form = claimBadge(request.POST)
         if form.is_valid():
