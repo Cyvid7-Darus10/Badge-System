@@ -1,7 +1,7 @@
 {% extends "badge/layout.html"%} 
 {% load static %}
 
-{% block body %}
+{% block content %}
     {% if badge.guilder.name %}
         <img id="badge" src="{{ badge.badge.badge.url }}" alt="">
         <h3>{{ badge.guilder.name }}</h3>
