@@ -54,14 +54,8 @@ def claim(request):
                         return HttpResponseRedirect(url)
                 else:
                     error = "Badge is not Found"
-        else:
-            return render(request, "badge/claim/claim.html", {
-                "form": form,
-                "csss" : css
-            })
-
-    if form == "":
-        form = claimBadge()
+        
+    form = form if form != "" else claimBadge()
 
     return render(request, "badge/claim/claim.html", {
         "form": form,
@@ -73,10 +67,9 @@ def view_badge(request, code):
     css = [
         "/static/badge/verify/view.css"
     ]
-    
-    try:
-        badge = Claimed.objects.get(serial=code)
-    except Claimed.DoesNotExist:
+
+    badge = get_if_exists(Claimed, **{'serial':code})
+    if not badge:
         badge = "Does Not Exist"
 
     return render(request, "badge/verify/view.html", {
@@ -88,19 +81,17 @@ def verify(request):
     css = [
         "/static/badge/verify/styles.css"
     ]
-
+    
+    form = ""
     if request.method == "POST":
         form = verifyBadge(request.POST)
         if form.is_valid():
             url = reverse('badge:view_badge', kwargs={'code':form.cleaned_data["serial"]})
             return HttpResponseRedirect(url)
-        else:
-            return render(request, "badge/verify/verify.html", {
-                "form" : form,
-                "csss" : css
-            })
+
+    form = form if form != "" else verifyBadge()
 
     return render(request, "badge/verify/verify.html", {
-        "form" : verifyBadge(),
+        "form" : form,
         "csss" : css
     })
