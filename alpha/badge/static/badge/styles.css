@@ -219,10 +219,16 @@ Navigation
 *********************/
 .navigation {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 20px 0 20px;
+  padding: 0px 1vw 0 1vw;
   background-color: #ffffff17;
   transition: 500ms;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
 }
 
 .navigation:hover .container{
@@ -232,6 +238,7 @@ Navigation
 .logo {
   color: #fff;
   font-size: 2rem;
+  margin-right: 3vw;
 }
 
 .logo div {
@@ -376,4 +383,36 @@ html.is-animating .transition-blur {
 
 html.is-leaving .transition-blur {
   filter: blur(2px);
+}
+
+
+/* Header */
+
+#bar {
+  font-size: 5vh;
+  color: white;
+  display: none !important;
+  cursor: pointer;
+}
+
+.menu ul.flex-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 992px) {
+  #bar {
+    display: block !important;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .navigation {
+    padding: 2vw 6vw 2vw 6vw;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
