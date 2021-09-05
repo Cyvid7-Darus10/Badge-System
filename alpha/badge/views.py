@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Badge, Guilder, Claimable, Claimed
-from .support import random_serial
+from .support import random_serial, get_if_exists
 from .forms import claimBadge, verifyBadge
 from datetime import datetime
 import pytz
@@ -24,45 +24,47 @@ def claim(request):
         "/static/badge/claim/styles.css"
     ]
     error = ""
+    form = ""
     if request.method == "POST":
         form = claimBadge(request.POST)
         if form.is_valid():
             code = form.cleaned_data["code"]
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
-            try:
-                guilder = Guilder.objects.get(email=email.lower())
-                error = "Email is used already."
-            except Guilder.DoesNotExist:
-                try:
-                    badge = Claimable.objects.get(code=code)
-                    serial = random_serial()
-                    try:
-                        guilder = Guilder.objects.get(name=name.title(), email=email.lower())
-                    except Guilder.DoesNotExist:
-                        guilder = Guilder.objects.create(name=name.title(),email=email.lower())
 
-                    try:
-                        Claimed.objects.get(guilder=guilder,badge=badge)
-                        error = "Already Claimed"
-                    except Claimed.DoesNotExist:
-                        curr_date = utc.localize(datetime.today())
-                        if (badge.expires_on >= curr_date):
-                            Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
-                            url = reverse('badge:view_badge', kwargs={'code':serial})
-                            return HttpResponseRedirect(url)
-                        else:
-                            error = "Expired Already"
-                except Claimable.DoesNotExist:
-                    error = "Not Found"
+            guilder = get_if_exists(Guilder, **{'name':name.title(), 'email':email.lower()})
+            guilder_email = get_if_exists(Guilder, **{'email':email.lower()})
+
+            if not guilder and not guilder_email:
+                guilder = Guilder.objects.create(name=name.title(),email=email.lower())
+            elif not guilder and guilder_email:
+                error = "Email is Already Used"
+
+            if guilder:
+                badge = get_if_exists(Claimable, **{'code':code})
+                claimed = get_if_exists(Claimed, **{'guilder':guilder,'badge':badge})
+                if claimed:
+                    error = "Badge is Claimed Already"
+                elif badge:
+                    serial = random_serial()
+                    curr_date = utc.localize(datetime.today())
+                    if (badge.expires_on >= curr_date):
+                        Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
+                        url = reverse('badge:view_badge', kwargs={'code':serial})
+                        return HttpResponseRedirect(url)
+                else:
+                    error = "Badge is not Found"
         else:
             return render(request, "badge/claim/claim.html", {
                 "form": form,
                 "csss" : css
             })
 
+    if form == "":
+        form = claimBadge()
+
     return render(request, "badge/claim/claim.html", {
-        "form": claimBadge(),
+        "form": form,
         "error": error,
         "csss" : css
     })
