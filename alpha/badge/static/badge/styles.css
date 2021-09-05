@@ -265,7 +265,10 @@ Content
 
 .home-content {
   color: #67d172;
+}
 
+.home-content h2 {
+  font-size: 6rem;
 }
 
 .home-content h3 {

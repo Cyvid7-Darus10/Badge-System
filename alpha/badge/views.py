@@ -41,7 +41,7 @@ def claim(request):
                         error = "Already Claimed"
                     except Claimed.DoesNotExist:
                         curr_date = utc.localize(datetime.today())
-                        if (badge.expires_on <= curr_date):
+                        if (badge.expires_on >= curr_date):
                             Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
                             url = reverse('badge:view_badge', kwargs={'code':serial})
                             return HttpResponseRedirect(url)
