@@ -1,22 +1,18 @@
-from django import forms
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Badge, Guilder, Claimable, Claimed
 from .support import random_serial
+from .forms import claimBadge, verifyBadge
 from datetime import datetime
 import pytz
+
 utc=pytz.UTC
 
-class claimBadge(forms.Form):
-    code  = forms.CharField(label="Code")
-    name  = forms.CharField(label="Name")
-    email = forms.EmailField(label="Email")
 
-class verifyBadge(forms.Form):
-    serial  = forms.CharField(label="Serial Code")
 
 # VIEWS
+
 def index(request):
     return render(request, "badge/home/home.html")
 
