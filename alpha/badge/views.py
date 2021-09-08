@@ -5,12 +5,7 @@ from .models import Badge, Guilder, Claimable, Claimed
 from .support import random_serial, get_if_exists
 from .forms import claimBadge, verifyBadge
 from .encryption import encrypt, decrypt
-from datetime import datetime
-import pytz
-
-utc=pytz.UTC
-
-# VIEWS
+from django.utils import timezone
 
 def index(request):
     css = [
@@ -49,12 +44,12 @@ def claim(request):
                     error = "Badge is Claimed Already"
                 elif badge:
                     serial = random_serial()
-                    curr_date = utc.localize(datetime.today())
+                    curr_date = timezone.now()
                     if (badge.expires_on >= curr_date):
                         Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
                         url = reverse('badge:view_badge', kwargs={'code':serial})
                         return HttpResponseRedirect(url)
-                    error = "Badge is Already Expired"
+                    error = curr_date
                 else:
                     error = "Badge is not Found"
         
