@@ -3,8 +3,6 @@ from django.conf import settings
 LETTERS = 'abcdefghijklmnopqrstuvwxyz@.abcdefghijklmnopqrstuvwxyz@.'
 key = settings.ENCRYPT_KEY.split(',')
 
-print(key)
-
 def encrypt(message):
     encrypted = ''
     i = 0
@@ -15,7 +13,6 @@ def encrypt(message):
             num = LETTERS.find(chars)
             num += int(key[i])
             encrypted +=  LETTERS[num]
-            print(key[i])
             i += 1
 
     return encrypted
