@@ -5,8 +5,8 @@ from django.db.models.fields import DateTimeField
 
 
 class Base(models.Model):
-    created = DateTimeField(auto_now_add=True)
-    updated = DateTimeField(auto_now=True)
+    created = DateTimeField(default=datetime.now)
+    updated = DateTimeField(default=datetime.now)
     deleted = DateTimeField(blank=True, null=True)
 
     class Meta:
@@ -42,7 +42,7 @@ class Claimable(Base):
         return f"{self.badge} | {self.code} | {self.release_on} - {self.expires_on}"
 
 
-class Claimed(models.Model):
+class Claimed(Base):
     guilder = models.ForeignKey(
         Guilder, on_delete=models.CASCADE, related_name="completer")
     badge = models.ForeignKey(
