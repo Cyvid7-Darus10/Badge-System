@@ -4,6 +4,7 @@ from django.urls import reverse
 from .models import Badge, Guilder, Claimable, Claimed
 from .support import random_serial, get_if_exists
 from .forms import claimBadge, verifyBadge
+from .encryption import encrypt, decrypt
 from datetime import datetime
 import pytz
 
@@ -31,12 +32,13 @@ def claim(request):
             code = form.cleaned_data["code"]
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
+            email = encrypt(email.lower())
 
-            guilder = get_if_exists(Guilder, **{'name':name.title(), 'email':email.lower()})
-            guilder_email = get_if_exists(Guilder, **{'email':email.lower()})
+            guilder = get_if_exists(Guilder, **{'name':name.title(), 'email':email})
+            guilder_email = get_if_exists(Guilder, **{'email':email})
 
             if not guilder and not guilder_email:
-                guilder = Guilder.objects.create(name=name.title(),email=email.lower())
+                guilder = Guilder.objects.create(name=name.title(),email=email)
             elif not guilder and guilder_email:
                 error = "Email is Already Used"
 

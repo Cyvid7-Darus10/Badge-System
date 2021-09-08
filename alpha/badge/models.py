@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import datetime
-
 from django.db.models.fields import DateTimeField
 
 
@@ -25,10 +24,10 @@ class Badge(Base):
 
 class Guilder(Base):
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
+    email = models.CharField(max_length=160)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.id} - {self.name}"
 
 
 class Claimable(Base):
