@@ -1,27 +1,35 @@
-from cryptography.fernet import Fernet
-import base64
-import logging
-import traceback
 from django.conf import settings
 
-def encrypt(txt):
-    try:
-        txt = str(txt)
-        cipher_suite = Fernet(settings.ENCRYPT_KEY)
-        encrypted_text = cipher_suite.encrypt(txt.encode('ascii'))
-        encrypted_text = base64.urlsafe_b64encode(encrypted_text).decode("ascii") 
-        return encrypted_text
-    except Exception as e:
-        logging.getLogger("error_logger").error(traceback.format_exc())
-        return None
+LETTERS = 'abcdefghijklmnopqrstuvwxyz@.abcdefghijklmnopqrstuvwxyz@.'
+key = settings.ENCRYPT_KEY.split(',')
 
+print(key)
 
-def decrypt(txt):
-    try:
-        txt = base64.urlsafe_b64decode(txt)
-        cipher_suite = Fernet(settings.ENCRYPT_KEY)
-        decoded_text = cipher_suite.decrypt(txt).decode("ascii")     
-        return decoded_text
-    except Exception as e:
-        logging.getLogger("error_logger").error(traceback.format_exc())
-        return None
+def encrypt(message):
+    encrypted = ''
+    i = 0
+    for chars in message:
+        if chars in LETTERS:
+            if i == len(key):
+                i = 0
+            num = LETTERS.find(chars)
+            num += int(key[i])
+            encrypted +=  LETTERS[num]
+            print(key[i])
+            i += 1
+
+    return encrypted
+
+def decrypt(message):
+    encrypted = ''
+    i = 0
+    for chars in message:
+        if chars in LETTERS:
+            if i == len(key):
+                i = 0
+            num = LETTERS.find(chars)
+            num -= int(key[i])
+            encrypted +=  LETTERS[num]
+            i += 1
+
+    return encrypted

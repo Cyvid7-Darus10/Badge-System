@@ -4,8 +4,8 @@ from django.urls import reverse
 from .models import Badge, Guilder, Claimable, Claimed
 from .support import random_serial, get_if_exists
 from .forms import claimBadge, verifyBadge
-from .encryption import encrypt, decrypt
 from django.utils import timezone
+from .encryption import encrypt, decrypt
 
 def index(request):
     css = [
@@ -26,8 +26,7 @@ def claim(request):
         if form.is_valid():
             code = form.cleaned_data["code"]
             name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            email = encrypt(email.lower())
+            email = encrypt(form.cleaned_data["email"].lower())
 
             guilder = get_if_exists(Guilder, **{'name':name.title(), 'email':email})
             guilder_email = get_if_exists(Guilder, **{'email':email})
@@ -49,7 +48,7 @@ def claim(request):
                         Claimed.objects.create(guilder=guilder,badge=badge,serial=serial)
                         url = reverse('badge:view_badge', kwargs={'code':serial})
                         return HttpResponseRedirect(url)
-                    error = curr_date
+                    error = "Badge is Already Expired"
                 else:
                     error = "Badge is not Found"
         
