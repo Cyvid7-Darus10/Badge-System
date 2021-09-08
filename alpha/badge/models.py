@@ -2,7 +2,6 @@ from django.db import models
 from datetime import datetime
 from django.db.models.fields import DateTimeField
 
-
 class Base(models.Model):
     created = DateTimeField(default=datetime.now)
     updated = DateTimeField(default=datetime.now)
@@ -10,7 +9,6 @@ class Base(models.Model):
 
     class Meta:
         abstract = True
-
 
 class Badge(Base):
     label = models.CharField(max_length=250)
@@ -21,14 +19,12 @@ class Badge(Base):
     def __str__(self):
         return f"{self.label} on {self.date} with {self.points} points"
 
-
 class Guilder(Base):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=160)
 
     def __str__(self):
         return f"{self.id} - {self.name}"
-
 
 class Claimable(Base):
     badge = models.ForeignKey(
@@ -39,7 +35,6 @@ class Claimable(Base):
 
     def __str__(self):
         return f"{self.badge} | {self.code} | {self.release_on} - {self.expires_on}"
-
 
 class Claimed(Base):
     guilder = models.ForeignKey(
