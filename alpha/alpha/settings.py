@@ -28,7 +28,7 @@ ENCRYPT_KEY = config('ENCRYPT_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [config('HOST')]
 
 
 # Application definition
