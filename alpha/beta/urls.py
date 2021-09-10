@@ -22,3 +22,4 @@ urlpatterns = [
     path('', include("badge.urls")),
     path('captcha/', include('captcha.urls'))
 ]
+
