@@ -92,3 +92,13 @@ def verify(request):
         "form" : form,
         "csss" : css
     })
+
+
+def contact(request):
+    css = [
+        "/static/badge/contact/styles.css"
+    ]
+
+    return render(request, "badge/contact/contact.html", {
+        "csss" : css
+    })
