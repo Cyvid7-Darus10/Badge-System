@@ -1,18 +1,16 @@
 {% extends "badge/layout.html"%} 
 
 {% block content %}
-    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-    <script src="/static/badge/verify/view.js"></script>
     {% if badge.guilder.name %}
         <img id="badge" src="{{ badge.badge.badge.url }}" alt="">
         <h3>{{ badge.guilder.name }}</h3>
-        <h3>{{ badge.badge.badge.label }}</h3>
+        <h3 id="label">{{ badge.badge.badge.label }}</h3>
         <h4>{{ badge.serial }}</h4>
-        <div id="qrcode"></div>
         <div class="button-containers">
             <a id="download" class="submit-button" type="submit">Download</a>
             <a id="share" class="submit-button" type="submit">Share</a>
         </div>
+        <canvas id="result"></canvas>
     {% else %}
         <h2>{{ badge }}</h2>
     {% endif %}

@@ -7,12 +7,16 @@ from .forms import claimBadge, verifyBadge
 from django.utils import timezone
 from .encryption import encrypt, decrypt
 
+js = []
+css = []
+
 def index(request):
     css = [
         "/static/badge/home/styles.css"
     ]
     return render(request, "badge/home/home.html", {
-        "csss" : css
+        "csss" : css,
+        "jss"  : js
     })
 
 def claim(request):
@@ -57,12 +61,17 @@ def claim(request):
     return render(request, "badge/claim/claim.html", {
         "form": form,
         "error": error,
-        "csss" : css
+        "csss" : css,
+        "jss"  : js
     })
 
 def view_badge(request, code):
     css = [
         "/static/badge/verify/view.css"
+    ]
+
+    js = [
+        "/static/badge/verify/view.js"
     ]
 
     badge = get_if_exists(Claimed, **{'serial':code})
@@ -71,7 +80,8 @@ def view_badge(request, code):
 
     return render(request, "badge/verify/view.html", {
         "badge" : badge,
-        "csss" : css
+        "csss" : css,
+        "jss"  : js
     })
 
 def verify(request):
@@ -90,7 +100,8 @@ def verify(request):
 
     return render(request, "badge/verify/verify.html", {
         "form" : form,
-        "csss" : css
+        "csss" : css,
+        "jss"  : js
     })
 
 
@@ -100,5 +111,6 @@ def contact(request):
     ]
 
     return render(request, "badge/contact/contact.html", {
-        "csss" : css
+        "csss" : css,
+        "jss"  : js
     })

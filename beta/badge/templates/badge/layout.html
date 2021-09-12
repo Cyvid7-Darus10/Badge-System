@@ -9,9 +9,6 @@
     <link rel="icon" type="image/png" href="{% static 'images/favicon-16x16.png' %}" sizes="16x16">
     <link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32">
     <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon.png' %}" >
-    <script defer src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
-    <script defer src="{% static 'badge/common.js' %}"></script>
-
     <title>Badge System</title>
     <link rel="stylesheet" href="{% static 'badge/styles.css' %}" />
   </head>
@@ -46,8 +43,12 @@
       </div>
     </div>
   </body>
-
-  <script src="https://use.fontawesome.com/0b39e945a8.js"></script>
   <script src="{% static 'lib/jquery.min.js' %}"></script>
-
+  <script defer src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+  <script defer src="{% static 'badge/common.js' %}"></script>
+  <script defer src="https://use.fontawesome.com/0b39e945a8.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  {% for js in jss %}
+    <script defer src="{{ js }}"></script>
+  {% endfor %}
 </html>
