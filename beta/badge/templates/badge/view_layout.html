@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="{{ badge.badge.badge.url }}" />
+    <meta property="og:description" content="This a badge for {{ badge.badge.badge.label }} claimed by {{ badge.guilder.name }}." />
+    <meta property="og:title" content="{{ badge.guilder.name }}" />
+
+    <link rel="icon" type="image/png" href="{% static 'images/favicon-16x16.png' %}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon.png' %}" >
+    <title>Badge System</title>
+    <link rel="stylesheet" href="{% static 'badge/styles.css' %}" />
+  </head>
+  
+  <body>
+
+    <div class="content-wrapper">
+      <div class="overlay"></div>
+      <div class="content">
+          <header class="navigation">
+              <a href="#" class="logo">
+                <img src="{% static 'images/favicon-32x32.png' %}" alt="">
+              </a>
+              <nav class="menu">
+                  <ul>
+                      <li><a href="{% url 'badge:home' %}">Home</a></li>
+                      <li><a href="{% url 'badge:claim' %}">Claim</a></li>
+                      <li><a href="{% url 'badge:verify' %}">Verify</a></li>
+                      <li><a href="{% url 'badge:contact' %}">Contact</a></li>
+                  </ul>
+              </nav>
+              <i id="bar" class="fa fa-bars" aria-hidden="true"></i>
+          </header>
+          <section id="swup" class="main home-content container transition-blur">
+            {% for css in csss %}
+              <link rel="stylesheet" href="{{ css }}" />
+            {% endfor %}
+            {% block content %} 
+            {% endblock %}
+          </section>
+          <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
+      </div>
+    </div>
+  </body>
+  <script src="{% static 'lib/jquery.min.js' %}"></script>
+  <script defer src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+  <script defer src="{% static 'badge/common.js' %}"></script>
+  <script defer src="https://use.fontawesome.com/0b39e945a8.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  {% for js in jss %}
+    <script defer src="{{ js }}"></script>
+  {% endfor %}
+</html>
