@@ -6,7 +6,7 @@
     <form action="{% url 'badge:claim' %}" method="post">
       {% csrf_token %}
       {{ form }}
-      <input id="submit-button" type="submit" value="Claim">
+      <input class="submit-button" type="submit" value="Claim">
     </form>
     <span class="error">{{ error }}</span>
   </div>

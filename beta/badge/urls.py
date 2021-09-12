@@ -8,5 +8,6 @@ urlpatterns = [
     path('home', views.index, name='home'),
     path('claim', views.claim, name='claim'),
     path('verify/<str:code>', views.view_badge, name='view_badge'),
-    path('verify/', views.verify, name='verify')
+    path('verify/', views.verify, name='verify'),
+    path('contact', views.contact, name='contact'),
 ]

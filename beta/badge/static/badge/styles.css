@@ -348,7 +348,7 @@ Input
 
 /* Button custom CSS */
 
-#submit-button {
+.submit-button {
   padding: 2px 13px;
   font-size: 24px;
   margin-top: 2rem;
@@ -402,6 +402,11 @@ html.is-leaving .transition-blur {
 }
 
 @media (max-width: 992px) {
+  .home-content {
+    background-color: #00000061;
+    padding: 2rem;
+  }
+
   .home-content h2 {
     font-size: 3rem;
   }
