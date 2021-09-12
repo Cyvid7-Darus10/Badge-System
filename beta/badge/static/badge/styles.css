@@ -362,9 +362,9 @@ Input
   box-shadow: 0 4px #999;
 }
 
-#submit-button:hover {background-color: #3e8e41}
+.submit-button:hover {background-color: #3e8e41}
 
-#submit-button:active {
+.submit-button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
