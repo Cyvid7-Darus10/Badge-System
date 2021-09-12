@@ -11,18 +11,18 @@ $(function () {
         base_image.crossOrigin="anonymous";
         base_image.src = badge.attr('src');
 
-        canvas.width = 500;
-        canvas.height = 500;
+        canvas.width = 700;
+        canvas.height = 700;
 
         base_image.onload = function(){
             context.globalAlpha = 1.0;
-            context.drawImage(base_image, 0, 0, 500, 500);
+            context.drawImage(base_image, 0, 0, 700, 700);
             qr_image = new Image();
             qr_image.src = dataURI;
     
             qr_image.onload = function(){
-                context.globalAlpha = 0.5;
-                context.drawImage(qr_image, 400, 400, 100, 100);
+                context.globalAlpha = 0.8;
+                context.drawImage(qr_image, 500, 500, 200, 200);
                 downloadURI(canvas.toDataURL(), filename + " Badge")
             }
         }        
