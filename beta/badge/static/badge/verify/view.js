@@ -1,8 +1,4 @@
 $(function () {
-    $("#share").click(function() {
-
-    });
-
     $("#download").click(function() {
         let badge = $('#badge');
         let filename = $('#label').html();
@@ -28,6 +24,13 @@ $(function () {
         }        
     });
 });
+var canvas = document.createElement("CANVAS");
+var context = canvas.getContext('2d');
+var dataURI = qr.toDataURL();
+var qr = new QRious({
+    size: 200,
+    value: window.location.href
+});
 
 function downloadURI(uri, name) {
     var link = document.createElement("a");
@@ -39,13 +42,16 @@ function downloadURI(uri, name) {
     delete link;
 }
 
+// facebook
+function shareFB(fbShareLink) {
+    var fbpopup = window.open("https://www.facebook.com/sharer/sharer.php?u=" + fbShareLink, "pop", "width=600, height=400, scrollbars=no");
+    return false;
+};
+  
+// twitter
+function shareTwitter(twShareLink) {
+    var twpopup = window.open("http://twitter.com/intent/tweet?" + twShareLink , "pop", "width=600, height=400, scrollbars=no");
+    return false;
+};
 
-var canvas = document.createElement("CANVAS");
-var context = canvas.getContext('2d');
 
-var qr = new QRious({
-    size: 200,
-    value: window.location.href
-});
-
-var dataURI = qr.toDataURL();

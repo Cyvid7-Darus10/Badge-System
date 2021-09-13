@@ -8,8 +8,22 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 24%;
+    align-items: flex-start;
     justify-content: space-evenly;
+    margin-top: 4rem;
 }
+
+.share li a {
+    color: #67d172;
+    font-size: 5rem;
+}
+
+.share li {
+    display: inline-block;
+    margin-left: 2rem;
+}
+
+
 
 @media (max-width: 992px) {
     .button-containers {

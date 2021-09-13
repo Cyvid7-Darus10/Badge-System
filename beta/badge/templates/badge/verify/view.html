@@ -8,7 +8,12 @@
         <h4>{{ badge.serial }}</h4>
         <div class="button-containers">
             <input type="button" value="Download" id="download" class="submit-button" type="submit">
-            <input type="button" value="Share" id="share" class="submit-button" type="submit">
+            <div class="share">
+                <ul>
+                    <li><a href="#" onclick="shareFB(window.location.href);"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" onclick="shareTwitter(window.location.href);"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
         </div>
         <canvas id="result"></canvas>
     {% else %}
