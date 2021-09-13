@@ -24,13 +24,14 @@ $(function () {
         }        
     });
 });
+
 var canvas = document.createElement("CANVAS");
 var context = canvas.getContext('2d');
-var dataURI = qr.toDataURL();
 var qr = new QRious({
     size: 200,
     value: window.location.href
 });
+var dataURI = qr.toDataURL();
 
 function downloadURI(uri, name) {
     var link = document.createElement("a");
