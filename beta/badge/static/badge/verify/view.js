@@ -51,7 +51,8 @@ function shareFB(fbShareLink) {
   
 // twitter
 function shareTwitter(twShareLink) {
-    var twpopup = window.open("http://twitter.com/intent/tweet?" + twShareLink , "pop", "width=600, height=400, scrollbars=no");
+    let event = $('#label').html();
+    var twpopup = window.open("http://twitter.com/intent/tweet?url=" + twShareLink + "&text=Check out my badge for " + event + ".", "pop", "width=600, height=400, scrollbars=no");
     return false;
 };
 
