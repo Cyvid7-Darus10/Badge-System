@@ -11,14 +11,13 @@ body {
 }
 
 html {
-  background: url('/static/images/bg.gif');
+  background: url('https://cdn.fbsbx.com/v/t59.2708-21/72484798_2343091562621231_5379813852433088512_n.gif?_nc_cat=100&fallback=1&ccb=1-5&_nc_sid=041f46&_nc_ohc=aQIk0wvu1bcAX-GI_hD&_nc_ht=cdn.fbsbx.com&oh=2c8081b7f6665aa61a217493d4d1f5f5&oe=6143710E');
   background-position: right;
   background-attachment: fixed;
   background-size: cover;
   font-size: 62.5%;
   filter: contrast(.8);
   overflow-x: hidden;
-  /* 14px = 10px  */
 }
 
 body {
@@ -38,190 +37,15 @@ ul {
   padding: 0;
 }
 
-img {
-  height: auto;
-  vertical-align: middle;
-  border: 0;
-}
-
-blockquote,
-figure {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-p,
-.p-like,
-ul,
-ol,
-dl,
-blockquote,
-pre,
-td,
-th,
-label,
-textarea,
-caption,
-details,
-figure {
-  line-height: 1.5;
-  margin-bottom: 0;
-}
-
-code,
-pre,
-samp,
-kbd {
-  font-family: monospace;
-  line-height: normal;
-  /* IE fix */
-  white-space: pre-line;
-  white-space: pre-wrap;
-}
-
-em,
-.italic,
-address,
-cite,
-dfn,
-i,
-var {
-  font-style: italic;
-}
-
-strong,
-.bold {
-  font-weight: 600;
-}
-
-small,
-sub,
-sup {
-  font-weight: 300;
-}
-
-/* ----------------------------------- */
-/* == PROPRIETES NAVIGATEURS RESET     */
-/* ----------------------------------- */
-p:first-child
-,
-.p-like:first-child
-,
-ul:first-child
-,
-ol:first-child
-,
-dl:first-child
-,
-blockquote:first-child
-,
-pre:first-child
-,
-h1:first-child
-,
-h2:first-child
-,
-h3:first-child
-,
-h4:first-child
-,
-h5:first-child
-,
-h6:first-child {
-  margin-top: 0;
-}
-
-li p,
-li .p-like,
-li ul,
-li ol {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-img,
-table,
-td,
-blockquote,
-code,
-pre,
-textarea,
-input,
-video {
-  max-width: 100%;
-}
-
-/***********
-GRID
-************/
-.container {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.container:after,
-.container-fluid:after{
-  clear: both;
-}
-
-.content-wrapper {
-  width: 100vw;
-  height: 100vh;
-}
-
-.content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.content > * {
-  position: relative;
-  z-index: 10;
-}
-
 /********************
 Navigation
 *********************/
 .navigation {
   display: flex;
-  padding: 0px 1vw 0 1vw;
-  background-color: #ffffff17;
+  background: rgba( 28, 27, 27, 0.4 );
+  backdrop-filter: blur( 14px );
+  -webkit-backdrop-filter: blur( 14px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   transition: 500ms;
   align-items: center;
   justify-content: center;
@@ -230,7 +54,7 @@ Navigation
   -o-transition: all 0.6s ease-out;
   -ms-transition: all 0.6s ease-out;
   transition: all 0.6s ease-out;
-  margin: 1rem;
+  z-index: 100;
 }
 
 .navigation:hover .container{
@@ -263,7 +87,6 @@ Navigation
   padding: 0 1rem;
 }
 
-
 .menu ul li a {
   color: #67d172;
   font-size: 2rem;
@@ -278,7 +101,6 @@ Content
   align-items: center;
   max-width: 100%;
   text-align: center;
-  margin-top: 10rem;
 }
 
 .home-content h1 {
@@ -287,6 +109,7 @@ Content
 
 .home-content {
   color: #67d172;
+  margin-top: 8rem;
 }
 
 .home-content h2 {
@@ -330,6 +153,11 @@ Footer
   text-align: center;
   padding: 2px 5px;
   color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 /********************
@@ -427,9 +255,10 @@ html.is-leaving .transition-blur {
 
 @media (max-width: 992px) {
   .home-content {
-    background-color: #00000061;
+    background: rgb(28 27 27 / 48%);
+    -webkit-backdrop-filter: blur( 6px );
+    backdrop-filter: blur(6px);
     padding: 2rem;
-    margin-top: 8rem;
   }
 
   .home-content h2 {
@@ -458,5 +287,8 @@ html.is-leaving .transition-blur {
     padding: 2vw 6vw 2vw 6vw;
     justify-content: space-between;
     align-items: flex-start;
+    position: fixed;
+    width: 100vw;
+    top: 0;
   }
 }
