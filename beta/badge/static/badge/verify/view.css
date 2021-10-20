@@ -27,13 +27,22 @@
     .button-containers {
         width: 110%;
     }
+    #badge {
+        animation: none;
+    }
 }
 
 @keyframes rotate {
     0% {
         transform: rotateY(-15deg) rotateZ(-20deg) ;
+        -webkit-transform: rotateY(-15deg) rotateZ(-20deg);
+        -moz-transform: rotateY(-15deg) rotateZ(-20deg) ;
+        -o-transform: rotateY(-15deg) rotateZ(-20deg) ; 
     }
     100% {
         transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
     }
 }

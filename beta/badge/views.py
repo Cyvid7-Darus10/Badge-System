@@ -33,7 +33,7 @@ def claim(request):
             code = form.cleaned_data["code"]
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"].lower()
-            if "up.edu.ph" in email:
+            if "@up.edu.ph" in email:
                 email = encrypt(email)
 
                 guilder = get_if_exists(Guilder, **{'name':name.title(), 'email':email})

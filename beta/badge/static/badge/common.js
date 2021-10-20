@@ -7,6 +7,18 @@ $(function () {
     const swup = new Swup();
     init();
     swup.on('contentReplaced', init);
+    $("#bar").click(function() {
+        $(".menu ul").toggleClass("flex-row");
+        if (barToggle) {
+            $(".menu").css("display", "block");
+            $(".logo").css("display", "none");
+            barToggle = 0;
+        } else {
+            $(".menu").css("display", "none");
+            $(".logo").css("display", "block");
+            barToggle = 1;
+        }
+    });
 });
 
 var barToggle = 1;
@@ -18,19 +30,6 @@ function init() {
         var input = this.value;
         if (!noProfanity(input)) {
             $(this).val("");
-        }
-    });
-
-    $("#bar").click(function() {
-        $(".menu ul").toggleClass("flex-row");
-        if (barToggle) {
-            $(".menu").css("display", "block");
-            $(".logo").css("display", "none");
-            barToggle = 0;
-        } else {
-            $(".menu").css("display", "none");
-            $(".logo").css("display", "block");
-            barToggle = 1;
         }
     });
 }

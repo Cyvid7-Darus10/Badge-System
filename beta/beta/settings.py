@@ -30,7 +30,6 @@ ENCRYPT_KEY = config('ENCRYPT_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
-
 ALLOWED_HOSTS = [config('HOST')]
 
 
@@ -91,8 +90,6 @@ DATABASES = {
 # DATABASES = {
 #     'default': dj_database_url.config()
 # }
-
-
 
 
 # Password validation
