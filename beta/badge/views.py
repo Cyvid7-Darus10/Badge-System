@@ -15,7 +15,17 @@ def index(request):
         "/static/badge/home/styles.css"
     ]
 
-    return render(request, "badge/home/home.html", {
+    return render(request, "badge/home/index.html", {
+        "csss" : css,
+        "jss"  : js
+    })
+
+def announcements(request):
+    css = [
+        "/static/badge/announcements/styles.css"
+    ]
+
+    return render(request, "badge/announcements/index.html", {
         "csss" : css,
         "jss"  : js
     })
@@ -64,7 +74,7 @@ def claim(request):
         
     form = form if form != "" else claimBadge()
 
-    return render(request, "badge/claim/claim.html", {
+    return render(request, "badge/claim/index.html", {
         "form": form,
         "error": error,
         "csss" : css,
@@ -104,7 +114,7 @@ def verify(request):
 
     form = form if form != "" else verifyBadge()
 
-    return render(request, "badge/verify/verify.html", {
+    return render(request, "badge/verify/index.html", {
         "form" : form,
         "csss" : css,
         "jss"  : js
@@ -116,7 +126,7 @@ def contact(request):
         "/static/badge/contact/styles.css"
     ]
 
-    return render(request, "badge/contact/contact.html", {
+    return render(request, "badge/contact/index.html", {
         "csss" : css,
         "jss"  : js
     })

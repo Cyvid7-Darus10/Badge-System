@@ -6,6 +6,7 @@ app_name = "badge"
 urlpatterns = [
     path('', views.index, name='index'),
     path('home', views.index, name='home'),
+    path('announcements', views.announcements, name='announcements'),
     path('claim', views.claim, name='claim'),
     path('verify/<str:code>', views.view_badge, name='view_badge'),
     path('verify/', views.verify, name='verify'),
