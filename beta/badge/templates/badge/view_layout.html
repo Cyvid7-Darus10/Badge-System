@@ -37,7 +37,7 @@
                     <div class="dropdown-content">
                       <a href="{% url 'badge:claim' %}">Claim</a>
                       <a href="{% url 'badge:verify' %}">Verify</a>
-                      <a href="{% url 'badge:verify' %}">Search</a>
+                      <a onclick="location.href = '/badge/search'" href="#">Search</a>
                     </div>
                   </div>
                   <li><a href="{% url 'badge:contact' %}">Contact</a></li>

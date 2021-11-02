@@ -1,0 +1,23 @@
+{% extends "badge/layout.html"%} 
+
+{% block content %}
+  <h2>SEARCH A GUILDER</h2>
+  <div class="input-container">
+    <form action="{% url 'badge:search' %}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input class="submit-button" type="submit" value="Search">
+    </form>
+  </div>
+  <script>
+      var availableNames = [
+          {% for guilder in guilders %}
+            "{{guilder.name}}",
+          {% endfor %}
+      ];
+
+      $("#id_guilder").autocomplete({
+              source: availableNames
+      });
+  </script>
+{% endblock %}

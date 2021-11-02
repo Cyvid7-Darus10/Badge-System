@@ -28,6 +28,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #67d172;
 }
 
 ul {
@@ -331,3 +332,10 @@ html.is-leaving .transition-blur {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* Auto Complete Search */
+
+.ui-autocomplete {
+  color: white;
+}
+

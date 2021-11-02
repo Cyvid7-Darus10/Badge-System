@@ -1,0 +1,44 @@
+#badge {
+    max-width: 250px;
+    animation: rotate 5s ease-in-out infinite alternate 1s forwards running
+}
+
+#badge-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge-wrapper {
+    background-color: #ffffff17;
+    margin: 1rem;
+    border-radius: 1rem;
+    transition: 300ms;
+    cursor: pointer;;
+}
+
+.badge-wrapper:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+    #badge {
+        animation: none;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(-15deg) rotateZ(-20deg) ;
+        -webkit-transform: rotateY(-15deg) rotateZ(-20deg);
+        -moz-transform: rotateY(-15deg) rotateZ(-20deg) ;
+        -o-transform: rotateY(-15deg) rotateZ(-20deg) ; 
+    }
+    100% {
+        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+    }
+}

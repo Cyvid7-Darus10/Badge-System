@@ -9,4 +9,6 @@ class claimBadge(forms.Form):
 
 class verifyBadge(forms.Form):
     serial  = forms.CharField(label="Serial Code")
-    captcha = CaptchaField()
+
+class searchUser(forms.Form):
+    guilder  = forms.CharField(label="Guilder")

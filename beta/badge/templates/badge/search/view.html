@@ -1,0 +1,20 @@
+{% extends "badge/view_layout.html"%} 
+
+{% block content %}
+    {% if claimed_badges %}
+        <h2>{{ claimed_badges.0.guilder.name }}</h2>
+        <div id="badge-container">
+            {% for claimed_badge in claimed_badges %}
+                <a href="{% url 'badge:view_badge' code=claimed_badge.serial %}">
+                    <div class="badge-wrapper">
+                        <img id="badge" src="{{ claimed_badge.badge.badge.url }}" alt="">
+                        <h3 id="label">{{ claimed_badge.badge.badge.label }}</h3>
+                        <h4>{{ claimed_badge.serial }}</h4>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>{{ claimed_badges }}</h2>
+    {% endif %}
+{% endblock %}
