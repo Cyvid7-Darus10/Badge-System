@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Badge, Guilder, Claimable, Claimed
+from .models import Badge, Guilder, Claimable, Claimed, Announcements
 from .support import random_serial, get_if_exists
 from .forms import claimBadge, verifyBadge
 from django.utils import timezone
@@ -25,9 +25,17 @@ def announcements(request):
         "/static/badge/announcements/styles.css"
     ]
 
+    js = [
+        "/static/badge/announcements/index.js"
+    ]
+
+    announcements = Announcements.objects.all()
+
     return render(request, "badge/announcements/index.html", {
         "csss" : css,
-        "jss"  : js
+        "jss"  : js,
+        "months" : months,
+        "announcements" : announcements
     })
 
 def claim(request):

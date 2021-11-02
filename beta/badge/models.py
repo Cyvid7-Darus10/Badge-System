@@ -45,3 +45,13 @@ class Claimed(Base):
 
     def __str__(self):
         return f"{self.guilder} | {self.badge} | {self.serial}"
+
+class Announcements(Base):
+    title = models.CharField(max_length=250)
+    summary = models.CharField(max_length=250)
+    text = models.TextField()
+    img_url = models.CharField(max_length=250)
+    date = models.DateField()
+
+    def __str__(self):
+        return f"{self.title}"
