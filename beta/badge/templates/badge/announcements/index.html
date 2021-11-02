@@ -2,43 +2,29 @@
 
 {% block content %}
     <div class="row">
-        <div class="cont-holder card">
+      {% for announcement in announcements %}
+        <div class="cont-holder card" id="card{{forloop.counter}}" onclick="openModal({{forloop.counter}})"> 
+          <input type="text" hidden value="{{announcement.text}}">
           <div class="wrapper">
-            <img src="https://images.unsplash.com/photo-1496979551903-46e46589a88b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cda12b505afa1beb06e49d89014cbd65&auto=format&fit=crop&w=634&q=80" alt="">
-            <div class="date">
-              <span class="day">12</span>
-              <span class="month">Aug</span>
-              <span class="year">2016</span>
-            </div>
+            <img src="{{ announcement.img_url }}" alt="">
+            <div class="date">{{ announcement.date }} </div>
             <div class="data">
                 <div class="content">
-                  <span class="author">Jane Doe</span>
-                  <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                  <a href="#" class="button">Read more</a>
+                  <span class="title">{{ announcement.title }}</span>
+                  <p class="text">{{ announcement.summary }}</p>
                 </div>
             </div>
           </div>
         </div>
+      {% endfor %}
+    </div>
 
-        <div class="cont-holder card">
-          <div class="wrapper">
-            <img src="https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg" alt="">
-            <div class="header">
-              <div class="date">
-                <span class="day">12</span>
-                <span class="month">Aug</span>
-                <span class="year">2016</span>
-              </div>
-            </div>
-            <div class="data">
-              <div class="content">
-                <span class="author">Stranger Things: The sound of the Upside Down</span>
-                <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                <a href="#" class="button">Read more</a>
-              </div>
-            </div>
-          </div>
+    <div id="modal-container" onclick="closeModal()">
+      <div class="modal-background">
+        <div class="modal">
+          <h2>I'm a Modal</h2>
+          <p>Hear me roar.</p>
         </div>
       </div>
-
+    </div>
 {% endblock %}

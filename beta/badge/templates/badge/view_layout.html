@@ -31,6 +31,7 @@
               <nav class="menu">
                   <ul>
                       <li><a href="{% url 'badge:home' %}">Home</a></li>
+                      <li><a href="{% url 'badge:announcements' %}">Announcements</a></li>
                       <li><a href="{% url 'badge:claim' %}">Claim</a></li>
                       <li><a href="{% url 'badge:verify' %}">Verify</a></li>
                       <li><a href="{% url 'badge:contact' %}">Contact</a></li>
@@ -44,6 +45,9 @@
             {% endfor %}
             {% block content %} 
             {% endblock %}
+            {% for js in jss %}
+            <script defer src="{{ js }}"></script>
+            {% endfor %}
           </section>
           <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
       </div>
@@ -54,7 +58,4 @@
   <script defer src="{% static 'badge/common.js' %}"></script>
   <script defer src="https://use.fontawesome.com/0b39e945a8.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-  {% for js in jss %}
-    <script defer src="{{ js }}"></script>
-  {% endfor %}
 </html>
