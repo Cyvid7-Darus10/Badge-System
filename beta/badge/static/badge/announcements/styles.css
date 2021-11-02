@@ -8,10 +8,12 @@
 
 .card {
     float: left;
-    padding: 0 1.7rem;
-    width: 25%;
-    margin: 2rem 0rem;
+    padding: 1.5rem;
+    width: 22%;
+    margin: 2rem;
     cursor: pointer;
+    background-color: #ffffff30;
+    border-radius: 1rem;
 }
 
 .card .menu-content {
@@ -45,7 +47,7 @@
 
 .card .wrapper {
     background-color: #000;
-    height: 41rem;
+    height: 31rem;
     position: relative;
     overflow: hidden;
     box-shadow: 0 19px 38px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 20%);
@@ -173,7 +175,7 @@
 
 @media (max-width: 992px) {
     .card {
-        width: 50%;
+        width: 80%;
     }
     #modal-container img{
         width: 100%;
@@ -182,14 +184,16 @@
     #modal-container .modal-background .modal {
         flex-direction: column !important;
     }
+    #modal-container p {
+        width: 81vw !important;
+    }
 }
 
 /* Modal CSS */
 #modal-container {
     position: fixed;
     display: table;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
     top: 0;
     left: 0;
     transform: scale(0);
@@ -199,6 +203,11 @@
 #modal-container img {
     height: 82vh;
     padding: 3rem;
+}
+
+#modal-container p {
+    text-align: left;
+    width: 25vw;
 }
 
 #modal-container.open {
@@ -237,7 +246,7 @@
 
 #modal-container .modal-background .modal {
     display: flex;
-    background: transparent;
+    background: #00000091;
     border-radius: 3px;
     font-weight: 300;
     position: relative;
