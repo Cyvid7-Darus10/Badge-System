@@ -25,12 +25,7 @@ def announcements(request):
         "/static/badge/announcements/styles.css"
     ]
 
-    js = [
-        "/static/badge/announcements/index.js"
-    ]
-
-    announcements = Announcements.objects.all()
-
+    announcements = Announcements.objects.order_by('-date')
     return render(request, "badge/announcements/index.html", {
         "csss" : css,
         "jss"  : js,
