@@ -34,7 +34,6 @@ def announcements(request):
     return render(request, "badge/announcements/index.html", {
         "csss" : css,
         "jss"  : js,
-        "months" : months,
         "announcements" : announcements
     })
 
