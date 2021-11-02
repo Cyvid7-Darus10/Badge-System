@@ -32,8 +32,14 @@
                   <ul>
                       <li><a href="{% url 'badge:home' %}">Home</a></li>
                       <li><a href="{% url 'badge:announcements' %}">Announcements</a></li>
-                      <li><a href="{% url 'badge:claim' %}">Claim</a></li>
-                      <li><a href="{% url 'badge:verify' %}">Verify</a></li>
+                      <div class="dropdown">
+                        <button class="dropbtn">Badge<i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <div class="dropdown-content">
+                          <a href="{% url 'badge:claim' %}">Claim</a>
+                          <a href="{% url 'badge:verify' %}">Verify</a>
+                          <a href="{% url 'badge:verify' %}">Search</a>
+                        </div>
+                      </div>
                       <li><a href="{% url 'badge:contact' %}">Contact</a></li>
                   </ul>
               </nav>
@@ -44,10 +50,7 @@
               <link rel="stylesheet" href="{{ css }}" />
             {% endfor %}
             {% block content %} 
-            {% endblock %}
-            {% for js in jss %}
-            <script src="{{ js }}"></script>
-            {% endfor %}          
+            {% endblock %}        
           </section>
           <footer class="footer">©Copyright All rights reserved - UPCSG 2021</footer>
       </div>
@@ -58,5 +61,5 @@
   <script defer src="{% static 'badge/common.js' %}"></script>
   <script defer src="https://use.fontawesome.com/0b39e945a8.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-
+  <script src="{% static 'badge/announcements/index.js' %}"></script>
 </html>
