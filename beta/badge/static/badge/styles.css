@@ -5,7 +5,6 @@
 html,
 body {
   min-width: 320px;
-  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -55,6 +54,9 @@ Navigation
   -ms-transition: all 0.6s ease-out;
   transition: all 0.6s ease-out;
   z-index: 100;
+  position: absolute;
+  width: 100vw;
+  top: 0;
 }
 
 .navigation:hover .container{
@@ -287,8 +289,5 @@ html.is-leaving .transition-blur {
     padding: 2vw 6vw 2vw 6vw;
     justify-content: space-between;
     align-items: flex-start;
-    position: fixed;
-    width: 100vw;
-    top: 0;
   }
 }
