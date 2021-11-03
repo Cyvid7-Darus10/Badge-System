@@ -15,7 +15,8 @@
     margin: 1rem;
     border-radius: 1rem;
     transition: 300ms;
-    cursor: pointer;;
+    cursor: pointer;
+    max-width: 250px;
 }
 
 .badge-wrapper:hover {

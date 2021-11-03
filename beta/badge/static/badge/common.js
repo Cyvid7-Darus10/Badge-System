@@ -32,6 +32,9 @@ function init() {
             $(this).val("");
         }
     });
+    setTimeout(() => {
+        $('img').show();
+    }, 1500);
 }
 
 function noProfanity(input) {
